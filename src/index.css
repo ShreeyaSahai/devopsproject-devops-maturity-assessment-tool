@@ -105,3 +105,19 @@
     );
   }
 }
+
+@media print {
+
+  .print\:break-inside-avoid {
+    break-inside: avoid;
+  }
+
+  .print\:page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+
+  body {
+    background: white !important;
+  }
+
+}

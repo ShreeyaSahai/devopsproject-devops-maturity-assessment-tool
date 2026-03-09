@@ -6,22 +6,30 @@ interface RadarChartProps {
 }
 
 const RadarChart = ({ data, size = 300 }: RadarChartProps) => {
-  const center = size / 2;
+
+  const padding = 60; // space for labels
+  const totalSize = size + padding * 2;
+
+  const center = totalSize / 2;
   const radius = size * 0.38;
+
   const levels = 4;
 
   const points = useMemo(() => {
     const angleStep = (2 * Math.PI) / data.length;
+
     return data.map((d, i) => {
       const angle = i * angleStep - Math.PI / 2;
       const pct = d.score / d.maxScore;
+
       return {
         x: center + radius * pct * Math.cos(angle),
         y: center + radius * pct * Math.sin(angle),
-        labelX: center + (radius + 28) * Math.cos(angle),
-        labelY: center + (radius + 28) * Math.sin(angle),
+
+        labelX: center + (radius + 35) * Math.cos(angle),
+        labelY: center + (radius + 35) * Math.sin(angle),
+
         label: d.category,
-        pct,
       };
     });
   }, [data, center, radius]);
@@ -31,21 +39,31 @@ const RadarChart = ({ data, size = 300 }: RadarChartProps) => {
   const gridLevels = Array.from({ length: levels }, (_, i) => {
     const scale = (i + 1) / levels;
     const angleStep = (2 * Math.PI) / data.length;
+
     const pts = data.map((_, j) => {
       const angle = j * angleStep - Math.PI / 2;
+
       return `${center + radius * scale * Math.cos(angle)},${center + radius * scale * Math.sin(angle)}`;
     });
+
     return pts.join(" ");
   });
 
   const axisLines = data.map((_, i) => {
     const angle = (i * 2 * Math.PI) / data.length - Math.PI / 2;
-    return { x2: center + radius * Math.cos(angle), y2: center + radius * Math.sin(angle) };
+
+    return {
+      x2: center + radius * Math.cos(angle),
+      y2: center + radius * Math.sin(angle),
+    };
   });
 
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-md mx-auto">
-      {/* Grid */}
+    <svg
+      viewBox={`0 0 ${totalSize} ${totalSize}`}
+      className="w-full max-w-md mx-auto overflow-visible"
+    >
+
       {gridLevels.map((pts, i) => (
         <polygon
           key={i}
@@ -57,7 +75,6 @@ const RadarChart = ({ data, size = 300 }: RadarChartProps) => {
         />
       ))}
 
-      {/* Axes */}
       {axisLines.map((line, i) => (
         <line
           key={i}
@@ -71,7 +88,6 @@ const RadarChart = ({ data, size = 300 }: RadarChartProps) => {
         />
       ))}
 
-      {/* Data polygon */}
       <polygon
         points={polygon}
         fill="hsl(175 80% 50% / 0.15)"
@@ -79,7 +95,6 @@ const RadarChart = ({ data, size = 300 }: RadarChartProps) => {
         strokeWidth="2"
       />
 
-      {/* Data points */}
       {points.map((p, i) => (
         <circle
           key={i}
@@ -91,7 +106,6 @@ const RadarChart = ({ data, size = 300 }: RadarChartProps) => {
         />
       ))}
 
-      {/* Labels */}
       {points.map((p, i) => (
         <text
           key={i}
@@ -99,11 +113,12 @@ const RadarChart = ({ data, size = 300 }: RadarChartProps) => {
           y={p.labelY}
           textAnchor="middle"
           dominantBaseline="middle"
-          className="fill-muted-foreground text-[10px] font-mono-display"
+          className="fill-muted-foreground text-[11px] font-mono-display"
         >
           {p.label}
         </text>
       ))}
+
     </svg>
   );
 };
