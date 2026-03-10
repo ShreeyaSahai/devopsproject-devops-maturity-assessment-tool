@@ -136,6 +136,17 @@ devopsproject-devops-maturity-assessment-tool/
 │   └── test/                           # Test files
 │       ├── setup.ts
 │       └── example.test.ts
+|
+├── infrastructure/
+|   ├── docker/
+|       ├── Dockerfile
+|       ├── docker-compose.yml
+|       └── nginx.conf
+|
+├── deliverables/
+|       ├── Demo Video.mp4
+|       └── DevOps Maturity Assessment Tool Presentation.pptx
+
 ```
 
 ---
