@@ -221,10 +221,9 @@ docker build -t devopsproject-devops-maturity-assessment-tool:latest .
 docker run -p 8080:8080 devopsproject-devops-maturity-assessment-tool:latest
 ```
 ---
-## 🎥 Demo
+## 🎥 Demo video
 
-### Demo Video
-[Link to 5-10 minute demo video in deliverables/]
+[Watch the Demo Video](./deliverables/demo-video.mp4)
 ---
 
 ## 🔀 Development Workflow
