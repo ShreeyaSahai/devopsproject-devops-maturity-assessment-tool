@@ -48,6 +48,8 @@ Organizations often lack a structured way to evaluate their DevOps practices and
 - **Configuration Management:** N/A
 - **Monitoring:** N/A
 
+This project is implemented as a static frontend application where all application logic runs in the client browser. The compiled assets are served through an Nginx container, and since the system does not include backend services or distributed infrastructure, additional DevOps tools such as orchestration, configuration management and monitoring tools were not required for this architecture.
+
 ---
 
 ## 🚀 Getting Started
