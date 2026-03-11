@@ -123,8 +123,7 @@ devopsproject-devops-maturity-assessment-tool/
 │   │   └── assessmentQuestions.ts      # Questions, categories, scoring logic
 │   │
 │   ├── hooks/                          # Custom React hooks
-│   │   ├── use-mobile.tsx
-│   │   └── use-toast.ts
+│   │   └── use-mobile.tsx
 │   │
 │   ├── lib/                            # Utility functions
 │   │   └── utils.ts
