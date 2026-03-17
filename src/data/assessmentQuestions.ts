@@ -229,11 +229,34 @@ export const questions: Question[] = [
 ];
 
 export const maturityLevels = [
-  { level: 1, name: "Initial", range: [0, 25], color: "hsl(0, 70%, 50%)", description: "Ad-hoc processes with minimal automation. High risk of failures." },
-  { level: 2, name: "Managed", range: [25, 50], color: "hsl(35, 90%, 55%)", description: "Some standardized processes and basic automation in place." },
-  { level: 3, name: "Defined", range: [50, 75], color: "hsl(45, 85%, 50%)", description: "Well-defined processes with good automation and cross-team practices." },
-  { level: 4, name: "Measured", range: [75, 90], color: "hsl(140, 60%, 45%)", description: "Metrics-driven with continuous improvement and advanced practices." },
-  { level: 5, name: "Optimized", range: [90, 100], color: "hsl(175, 80%, 50%)", description: "Industry-leading practices with continuous optimization and innovation." },
+  {
+    level: 1,
+    name: "Initial",
+    description: "Processes are mostly manual with limited automation.",
+    color: "#ef4444",
+    range: [0, 26],
+  },
+  {
+    level: 2,
+    name: "Managed",
+    description: "Some DevOps practices are implemented but not consistently.",
+    color: "#f59e0b",
+    range: [26, 50],
+  },
+  {
+    level: 3,
+    name: "Defined",
+    description: "DevOps practices are standardized with good automation.",
+    color: "#3b82f6",
+    range: [50, 75],
+  },
+  {
+    level: 4,
+    name: "Optimized",
+    description: "Highly mature DevOps practices with full automation and monitoring.",
+    color: "#10b981",
+    range: [75, 101],
+  },
 ];
 
 export const recommendations: Record<string, Record<number, string>> = {
